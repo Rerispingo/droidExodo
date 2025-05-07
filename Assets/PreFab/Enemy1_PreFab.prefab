@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3796892001884499899}
   - component: {fileID: 7169362399001629698}
   - component: {fileID: 5489421197271817335}
-  - component: {fileID: -8819915598299035172}
   - component: {fileID: 5503918025588317668}
+  - component: {fileID: 236445123509450353}
   m_Layer: 0
   m_Name: Enemy1_PreFab
   m_TagString: Enemy
@@ -110,19 +110,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-8819915598299035172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465581579417788362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35574f30c326c547a76ee5ae27e0fca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootPreFab: {fileID: 1847712636054003488, guid: f7635d565cad0964197259b37365a40a, type: 3}
 --- !u!114 &5503918025588317668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +127,20 @@ MonoBehaviour:
   health: 0
   maxHealth: 20
   damage: 25
-  attackCooldown: 0.6
+  attackCooldown: 0.5
   bulletSpeed: 0.1
   MovementVariation: 20
   HealthBar: {fileID: 0}
+--- !u!114 &236445123509450353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465581579417788362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fd1fe9de5ec9e544af75aebda65504d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootPreFab: {fileID: 1847712636054003488, guid: f7635d565cad0964197259b37365a40a, type: 3}

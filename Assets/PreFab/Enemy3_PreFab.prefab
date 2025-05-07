@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7169362399001629698}
   - component: {fileID: 5489421197271817335}
   - component: {fileID: 5503918025588317668}
-  - component: {fileID: 1368414089477003116}
+  - component: {fileID: -7150632085951560194}
   m_Layer: 0
-  m_Name: Enemy2_PreFab
+  m_Name: Enemy3_PreFab
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6cf85c3685482a149b9320c7afaaa54c, type: 2}
+  - {fileID: 2100000, guid: ec4d94998f7fa924bbd002f1c215e0dc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   bulletSpeed: 0.125
   MovementVariation: 0
   HealthBar: {fileID: 0}
---- !u!114 &1368414089477003116
+--- !u!114 &-7150632085951560194
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1465581579417788362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35574f30c326c547a76ee5ae27e0fca, type: 3}
+  m_Script: {fileID: 11500000, guid: 13c42850188af6f4786eafdbe32bc79e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shootPreFab: {fileID: 1847712636054003488, guid: f7635d565cad0964197259b37365a40a, type: 3}
