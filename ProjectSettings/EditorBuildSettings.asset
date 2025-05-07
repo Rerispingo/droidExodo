@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 6dab725105e758c4fa292ce513a062e0
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: 562c80ff5c880904f8a9b925ba3a43ef
+  - enabled: 1
+    path: Assets/Scenes/Game2.unity
+    guid: d06aee513b4fbf34d93a9a6a1c7a7a3c
+  - enabled: 1
+    path: Assets/Scenes/zVitoria.unity
+    guid: 488a8650da4bbc84fa149e95cfc04f4e
+  - enabled: 1
+    path: Assets/Scenes/zDerrota.unity
+    guid: 112126a9274f03546b4de048faf6b0d2
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_UseUCBPForAssetBundles: 0
