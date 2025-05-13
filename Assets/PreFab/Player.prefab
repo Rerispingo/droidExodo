@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1847712636054003488, guid: 04e1880cac3ad174184edbe30bdf9d07, type: 3}
+  bulletStrongPrefab: {fileID: 0}
 --- !u!114 &346366760565189417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,9 +182,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  speedDefault: 0
   health: 0
   maxHealth: 100
   damage: 10
-  attackCooldown: 0
-  bulletSpeed: 75
+  attackCooldown: 0.35
+  chargeAttackCooldown: 1.5
+  bulletSpeed: 30
+  MovementVariation: 0
   HealthBar: {fileID: 4848399790336111494, guid: e0f3cbec8674aaf419ddd280377103ff, type: 3}

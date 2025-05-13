@@ -14,6 +14,7 @@ public class EntityStats : MonoBehaviour
     public float maxHealth;
     public float damage;
     public float attackCooldown;
+    public float chargeAttackCooldown;
     public float bulletSpeed;
     public float MovementVariation;
 
