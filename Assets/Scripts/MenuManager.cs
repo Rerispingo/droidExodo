@@ -1,35 +1,38 @@
-using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance { get; private set; }
 
-    private void Awake() 
-    { 
-        if(Instance != null && Instance != this) 
-        { 
+    private void Awake() //Singleton
+    {
+        if (Instance != null && Instance != this)
+        {
 
-            Destroy(this); 
+            Destroy(this);
 
-        } 
-        else 
-        { 
+        }
+        else
+        {
 
-            Instance = this; 
+            Instance = this;
 
-        } 
+        }
     }
 
 
-
-    private bool IsPaused;
-    public GameObject CanvasMenu;
+    private bool IsPaused, isOptions;
+    public GameObject CanvasMenu, CanvasOptions, optionsScreen;
+    public List<int> scenesIndex;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        scenesIndex = new List<int>() { 1, 2 };
     }
 
     // Update is called once per frame
@@ -37,7 +40,10 @@ public class MenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) //Pausar o Jogo
         {
-            PauseGame();
+            if (scenesIndex.Contains(SceneManager.GetActiveScene().buildIndex))
+            {
+                PauseGame();
+            }
         }
     }
 
@@ -48,8 +54,35 @@ public class MenuManager : MonoBehaviour
 
     public void PauseGame()
     {
-        Debug.Log(IsPaused);
         IsPaused = !IsPaused;
         CanvasMenu.SetActive(IsPaused);
+    }
+
+    public void Options()
+    {
+        isOptions = !isOptions;
+        if (isOptions)
+        {
+            optionsScreen = Instantiate(CanvasOptions);
+            Button[] buttonList = optionsScreen.GetComponentsInChildren<Button>();
+            for (int i = 0; i < buttonList.Length; i++)
+            {
+                if (buttonList[i].gameObject.name == "ExitButton")
+                {
+                    buttonList[i].onClick.AddListener(Options);
+                }
+            }
+        }
+        else
+        {
+            Destroy(optionsScreen);
+        }
+
+
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

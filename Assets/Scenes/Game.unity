@@ -3679,6 +3679,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2371595231962858417, guid: 5683dcbc13e490f4c9ece03ce0d740f0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2113925709}
+    - target: {fileID: 2371595231962858417, guid: 5683dcbc13e490f4c9ece03ce0d740f0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Options
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371595231962858417, guid: 5683dcbc13e490f4c9ece03ce0d740f0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371595231962858417, guid: 5683dcbc13e490f4c9ece03ce0d740f0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2704617341169058247, guid: 5683dcbc13e490f4c9ece03ce0d740f0, type: 3}
       propertyPath: m_Name
       value: CanvasMenu
@@ -3793,6 +3809,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanvasMenu: {fileID: 1894228435}
+  CanvasOptions: {fileID: 5185468309168464022, guid: 3870df85f61218848819582191253f91, type: 3}
+  optionsScreen: {fileID: 0}
+  scenesIndex: 
 --- !u!224 &428496450772875473
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4356,6 +4375,10 @@ PrefabInstance:
     - target: {fileID: 3415476864002511256, guid: 607e6e326ad6d5a47b2db1e026554021, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597266973175289319, guid: 607e6e326ad6d5a47b2db1e026554021, type: 3}
+      propertyPath: offsetZ
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4252587246671097185, guid: 607e6e326ad6d5a47b2db1e026554021, type: 3}
       propertyPath: m_Name
