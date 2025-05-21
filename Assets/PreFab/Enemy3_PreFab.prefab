@@ -128,9 +128,11 @@ MonoBehaviour:
   maxHealth: 50
   damage: 50
   attackCooldown: 1.5
+  chargeAttackCooldown: 0
   bulletSpeed: 0.2
   MovementVariation: 0
   HealthBar: {fileID: 0}
+  HealthPowerUp: {fileID: 2134999653159557501, guid: cec91d972c4f2ce42a311ba62ee0fc3b, type: 3}
 --- !u!114 &-7150632085951560194
 MonoBehaviour:
   m_ObjectHideFlags: 0

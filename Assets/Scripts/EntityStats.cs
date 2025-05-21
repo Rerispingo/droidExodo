@@ -19,6 +19,7 @@ public class EntityStats : MonoBehaviour
     public float MovementVariation;
 
     public GameObject HealthBar;
+    public GameObject HealthPowerUp;
 
     private float speedBoostDuration=5f;
     private float speedBoostMultiplier=1.5f;
@@ -35,6 +36,10 @@ public class EntityStats : MonoBehaviour
     void OnHealthChange(float value)
     {
         health += value;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
 
         if (health <= 0 && gameObject.CompareTag("Player"))
         {
@@ -43,6 +48,11 @@ public class EntityStats : MonoBehaviour
         else if (health <= 0 && gameObject.CompareTag("Enemy"))
         {
             LevelManager.Instance.QuantEnemy -= 1;
+            if (Random.Range(0, 2) == 0)
+            {
+                GameObject HealthPU = Instantiate(HealthPowerUp);
+                HealthPU.transform.position = gameObject.transform.position;
+            }
             Destroy(gameObject);
         }
     }
@@ -61,5 +71,10 @@ public class EntityStats : MonoBehaviour
         yield return new WaitForSeconds(speedBoostDuration);
         speed = speedDefault;
         HUDManager.Instance.SpeedBoostText.SetActive(false);
+    }
+
+    public void HealthBoost()
+    {
+        onHealthChangeEvent.Invoke(maxHealth/5);
     }
 }
