@@ -12,6 +12,7 @@ public class playerMovement : MonoBehaviour
 
     public float minZ,maxZ;
     public float minX,maxX;
+    public float offsetZ;
 
     void Start()
     {
@@ -35,7 +36,7 @@ public class playerMovement : MonoBehaviour
             cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, transform.position.z);
         }
 
-        float WallDeathRelativePos = LevelManager.Instance.WallDeathPosition + 15f;
+        float WallDeathRelativePos = LevelManager.Instance.WallDeathPosition + offsetZ;
         if (cam.transform.position.z < WallDeathRelativePos)
         {
             cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, WallDeathRelativePos);

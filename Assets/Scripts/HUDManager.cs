@@ -26,6 +26,7 @@ public class HUDManager : MonoBehaviour
     public GameObject HealthBar;
     public TextMeshProUGUI EnemyCountText;
     public GameObject SpeedBoostText;
+    public GameObject chargeShootHUD;
 
     private EntityStats playerStats;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -63,5 +64,11 @@ public class HUDManager : MonoBehaviour
     void HealthHudChange(float value)
     {
         HealthBar.GetComponent<Slider>().value = playerStats.health / playerStats.maxHealth;
+    }
+
+    public void changeChargeSlider(float value, bool enabled=true)
+    {
+        chargeShootHUD.GetComponent<Slider>().value = value;
+        chargeShootHUD.SetActive(enabled);
     }
 }

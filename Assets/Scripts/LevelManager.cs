@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -50,7 +51,15 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.CapsLock))
+        {
+            int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
+            if (nextScene > 2)
+            {
+                nextScene = 1;
+            }
+            SceneManager.LoadScene(nextScene);
+        }
     }
 
     void FixedUpdate()
