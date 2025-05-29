@@ -13,6 +13,7 @@ public class PlayerShoot : MonoBehaviour
     private float chargingShootingStrong;
 
     public GameObject SecondShootAudio;
+    public GameObject FirstShootAudio;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -60,6 +61,8 @@ public class PlayerShoot : MonoBehaviour
         bullet.transform.position = transform.position;
         bullet.transform.LookAt(transform.forward + transform.position); //Transform position serve para somar ao vetor e o foward (+1) funcionar corretamente.
         bullet.GetComponent<Rigidbody>().AddForce((bullet.transform.forward) * entityStats.bulletSpeed * 100);
+
+        FirstShootAudio.GetComponent<AudioSource>().Play();
     }
 
     public void AtirarForte()
