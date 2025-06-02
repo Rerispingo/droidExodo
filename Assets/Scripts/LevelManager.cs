@@ -31,6 +31,8 @@ public class LevelManager : MonoBehaviour
     public float WallDeathPosition;
     public GameObject WallDeath;
     public GameObject ExitTrigger;
+    public GameObject tutorialText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

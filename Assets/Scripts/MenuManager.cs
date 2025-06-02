@@ -1,15 +1,13 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using System;
 
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance { get; private set; }
-
     private void Awake() //Singleton
     {
         if (Instance != null && Instance != this)
@@ -30,9 +28,9 @@ public class MenuManager : MonoBehaviour
     private bool IsPaused, isOptions;
     public GameObject CanvasMenu, CanvasOptions, optionsScreen;
     public List<int> scenesIndex;
-
     public AudioMixer audioMixer;
     private Slider[] slidersOptions;
+    private String[] mixerGroups;
     /*
      * 0 - Volume
      */
@@ -49,21 +47,9 @@ public class MenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) //Pausar o Jogo
         {
-            if (scenesIndex.Contains(SceneManager.GetActiveScene().buildIndex)) // Verificar se não está no menu
+            if (scenesIndex.Contains(SceneManager.GetActiveScene().buildIndex)) // Verificar se nï¿½o estï¿½ no menu
             {
                 PauseGame();
-            }
-        }
-
-        if (isOptions)
-        {
-            if (slidersOptions[0].value != 0)
-            {
-                audioMixer.SetFloat("MasterVolume", Mathf.Log10(slidersOptions[0].value) * 20);
-            }
-            else
-            {
-                audioMixer.SetFloat("MasterVolume", -80);
             }
         }
     }
@@ -78,14 +64,15 @@ public class MenuManager : MonoBehaviour
         if (isOptions)
         {
             Options();
-        }else
+        }
+        else
         {
             IsPaused = !IsPaused;
             CanvasMenu.SetActive(IsPaused);
         }
     }
 
-    public void Options()
+    public void Options() // Abrir opcoes dentro do pause.
     {
         isOptions = !isOptions;
         if (isOptions)
@@ -93,12 +80,22 @@ public class MenuManager : MonoBehaviour
             optionsScreen = Instantiate(CanvasOptions);
             Button[] buttonList = optionsScreen.GetComponentsInChildren<Button>();
 
-            slidersOptions = optionsScreen.GetComponentsInChildren<Slider>();
-            float currentVolume;
-            audioMixer.GetFloat("MasterVolume", out currentVolume);
-            slidersOptions[0].value = Mathf.Pow(10, currentVolume / 20); // Conversão contraria (DB to 0-1)
+            slidersOptions = optionsScreen.GetComponentsInChildren<Slider>(); // Lista das opcoes
+            mixerGroups = new string[] {
+                "effectsVolume",
+                "musicVolume"
+            };
 
-            for (int i = 0; i < buttonList.Length; i++)
+            // Lista de cada opcao sendo configurada
+            audioMixer.GetFloat(mixerGroups[0], out float currentEffectsVolume);
+            slidersOptions[0].value = Mathf.Pow(10, currentEffectsVolume / 20); // Conversao contraria (DB to 0-1)
+            slidersOptions[0].onValueChanged.AddListener(delegate { SliderChange(0); });
+
+            audioMixer.GetFloat(mixerGroups[1], out float currentMusicVolume);
+            slidersOptions[1].value = Mathf.Pow(10, currentMusicVolume / 20);
+            slidersOptions[1].onValueChanged.AddListener(delegate { SliderChange(1); });
+
+            for (int i = 0; i < buttonList.Length; i++) // Configurar botao Exit.
             {
                 if (buttonList[i].gameObject.name == "ExitButton")
                 {
@@ -110,8 +107,18 @@ public class MenuManager : MonoBehaviour
         {
             Destroy(optionsScreen);
         }
+    }
 
-
+    public void SliderChange(int index)
+    {
+        if (slidersOptions[index].value != 0) // Alterar volume
+        {
+            audioMixer.SetFloat(mixerGroups[index], Mathf.Log10(slidersOptions[index].value) * 20);//Converter 0-1 p DB
+        }
+        else
+        {
+            audioMixer.SetFloat(mixerGroups[index], -80);
+        }
     }
 
     public void ExitGame()

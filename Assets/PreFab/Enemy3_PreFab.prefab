@@ -133,6 +133,7 @@ MonoBehaviour:
   MovementVariation: 0
   HealthBar: {fileID: 0}
   HealthPowerUp: {fileID: 2134999653159557501, guid: cec91d972c4f2ce42a311ba62ee0fc3b, type: 3}
+  DeathSound: {fileID: 6192642700109802796, guid: f3ff11b1f4fd6b2409a3b73e56fd066e, type: 3}
 --- !u!114 &-7150632085951560194
 MonoBehaviour:
   m_ObjectHideFlags: 0

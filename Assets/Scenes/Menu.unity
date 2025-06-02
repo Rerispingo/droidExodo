@@ -1205,7 +1205,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanvasMenu: {fileID: 640387269}
   CanvasOptions: {fileID: 5185468309168464022, guid: 3870df85f61218848819582191253f91, type: 3}
+  optionsScreen: {fileID: 0}
   scenesIndex: 
+  audioMixer: {fileID: 24100000, guid: 65de06814aee691469bb78c33f7e572a, type: 2}
 --- !u!4 &1641234381
 Transform:
   m_ObjectHideFlags: 0

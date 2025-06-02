@@ -1,8 +1,6 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class EntityStats : MonoBehaviour
 {
@@ -24,6 +22,8 @@ public class EntityStats : MonoBehaviour
     private float speedBoostDuration=5f;
     private float speedBoostMultiplier=1.5f;
 
+    public GameObject DeathSound;
+
     void Start()
     {
         health = maxHealth;
@@ -43,7 +43,9 @@ public class EntityStats : MonoBehaviour
 
         if (health <= 0 && gameObject.CompareTag("Player"))
         {
+            GameObject deathSoundI = GameObject.Instantiate(DeathSound, transform);
             UnityEngine.SceneManagement.SceneManager.LoadScene("zDerrota");
+            
         }
         else if (health <= 0 && gameObject.CompareTag("Enemy"))
         {
@@ -53,6 +55,9 @@ public class EntityStats : MonoBehaviour
                 GameObject HealthPU = Instantiate(HealthPowerUp);
                 HealthPU.transform.position = gameObject.transform.position;
             }
+            GameObject deathSoundI = GameObject.Instantiate(DeathSound);
+            deathSoundI.transform.position = transform.position;
+            deathSoundI.GetComponent<AudioSource>().Play();
             Destroy(gameObject);
         }
     }

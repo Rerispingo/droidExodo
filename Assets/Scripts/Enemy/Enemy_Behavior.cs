@@ -6,6 +6,7 @@ public class Enemy_Behavior : MonoBehaviour
     private EntityStats entityStats;
     public GameObject shootPreFab;
     private float shootSpeed, shootCooldownC, shootCooldown;
+    public GameObject[] shootPos;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,13 +26,18 @@ public class Enemy_Behavior : MonoBehaviour
         if (shootCooldownC >= shootCooldown)
         {
             shootCooldownC = 0f;
+            float offsetShoot = 2f;
 
-            GameObject bullet = GameObject.Instantiate(shootPreFab);
-            bullet.GetComponent<bulletBehavior>().damage = entityStats.damage; //Dano do tiro
-            bullet.GetComponent<bulletBehavior>().parent = gameObject;
-            bullet.transform.position = transform.position;
-            bullet.transform.LookAt(transform.forward + transform.position);
-            bullet.GetComponent<Rigidbody>().AddForce((bullet.transform.forward) * shootSpeed);
+            for (int i = 0; i < 2; i++)
+            {
+                GameObject[] bullets = new GameObject[2];
+                bullets[i] = GameObject.Instantiate(shootPreFab);
+                bullets[i].GetComponent<bulletBehavior>().damage = entityStats.damage; //Dano do tiro
+                bullets[i].GetComponent<bulletBehavior>().parent = gameObject;
+                bullets[i].transform.position = shootPos[i].transform.position;
+                bullets[i].transform.LookAt(shootPos[i].transform.forward + bullets[i].transform.position);
+                bullets[i].GetComponent<Rigidbody>().AddForce((bullets[i].transform.forward) * shootSpeed);
+            }
         }
         shootCooldownC += Time.deltaTime;
     }

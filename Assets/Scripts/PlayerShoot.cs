@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class PlayerShoot : MonoBehaviour
@@ -9,10 +10,11 @@ public class PlayerShoot : MonoBehaviour
     public GameObject bulletPrefab, bulletStrongPrefab;
     private float cooldown, chargeCooldown;
 
-    private bool isShootingStrong = true;
+    private bool isShootingStrong = false;
     private float chargingShootingStrong;
 
     public GameObject SecondShootAudio;
+    public GameObject SecondShootChargeAudio;
     public GameObject FirstShootAudio;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,26 +33,39 @@ public class PlayerShoot : MonoBehaviour
             cooldown = entityStats.attackCooldown;
         }
         cooldown -= Time.deltaTime;
-        
-        if (Input.GetMouseButtonDown(1) && !isShootingStrong)
-        {
-            isShootingStrong = true;
-            HUDManager.Instance.changeChargeSlider(chargingShootingStrong/chargeCooldown, isShootingStrong);
 
-        }
-        if (Input.GetMouseButton(1) && isShootingStrong)
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
-            chargingShootingStrong += Time.deltaTime;
-            HUDManager.Instance.changeChargeSlider(chargingShootingStrong/chargeCooldown);
-            if (chargingShootingStrong >= chargeCooldown)
+            if (Input.GetMouseButtonDown(1) && !isShootingStrong)
+            {
+                isShootingStrong = true;
+                HUDManager.Instance.changeChargeSlider(chargingShootingStrong / chargeCooldown, isShootingStrong);
+                SecondShootChargeAudio.GetComponent<AudioSource>().Play(); // Carregar tiro sound.
+
+            }
+            if (Input.GetMouseButton(1) && isShootingStrong)
+            {
+                chargingShootingStrong += Time.deltaTime;
+                HUDManager.Instance.changeChargeSlider(chargingShootingStrong / chargeCooldown);
+                if (chargingShootingStrong >= chargeCooldown)
+                {
+                    chargingShootingStrong = 0;
+                    isShootingStrong = false;
+                    HUDManager.Instance.changeChargeSlider(chargingShootingStrong / chargeCooldown, isShootingStrong);
+                    AtirarForte();
+                    SecondShootChargeAudio.GetComponent<AudioSource>().Stop(); // Stop SecondShootCharging sound.
+                }
+            }
+            if (Input.GetMouseButtonUp(1))
             {
                 chargingShootingStrong = 0;
                 isShootingStrong = false;
-                HUDManager.Instance.changeChargeSlider(chargingShootingStrong/chargeCooldown, isShootingStrong);
-                AtirarForte();
+                HUDManager.Instance.changeChargeSlider(chargingShootingStrong / chargeCooldown, isShootingStrong);
+                SecondShootChargeAudio.GetComponent<AudioSource>().Stop(); // Stop SecondShootCharging sound.
             }
         }
-        
+
+
     }
 
     public void Atirar()
@@ -67,7 +82,7 @@ public class PlayerShoot : MonoBehaviour
 
     public void AtirarForte()
     {
-        GameObject bulletStrong = GameObject.Instantiate(bulletPrefab);
+        GameObject bulletStrong = GameObject.Instantiate(bulletStrongPrefab);
         bulletStrong.GetComponent<bulletBehavior>().damage = entityStats.damage * 2; //Dano do tiro
         bulletStrong.GetComponent<bulletBehavior>().parent = gameObject;
         bulletStrong.transform.position = transform.position;
