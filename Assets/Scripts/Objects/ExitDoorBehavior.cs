@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ExitDoorBehavior : MonoBehaviour
 {
@@ -16,6 +17,6 @@ public class ExitDoorBehavior : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Game2");
+        MenuManager.Instance.SceneTransition(2);
     }
 }

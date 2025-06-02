@@ -1,9 +1,10 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using System;
+using System.Collections;
+using System.Linq;
 
 public class MenuManager : MonoBehaviour
 {
@@ -24,10 +25,9 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-
     private bool IsPaused, isOptions;
     public GameObject CanvasMenu, CanvasOptions, optionsScreen;
-    public List<int> scenesIndex;
+    public int[] scenesIndex;
     public AudioMixer audioMixer;
     private Slider[] slidersOptions;
     private String[] mixerGroups;
@@ -39,7 +39,7 @@ public class MenuManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        scenesIndex = new List<int>() { 1, 2 };
+        scenesIndex = new int[2] { 1, 2 };
     }
 
     // Update is called once per frame
@@ -47,16 +47,31 @@ public class MenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) //Pausar o Jogo
         {
-            if (scenesIndex.Contains(SceneManager.GetActiveScene().buildIndex)) // Verificar se n�o est� no menu
+            for (int i=0; i<scenesIndex.Length; i++)
             {
-                PauseGame();
+                if (scenesIndex[i] == SceneManager.GetActiveScene().buildIndex) // Verificar se n�o est� no menu
+                {
+                    PauseGame();
+                }
             }
+            
         }
     }
 
     public void SceneTransition(int indexScene)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(indexScene);
+        Time.timeScale = 0;
+        StartCoroutine(SceneTransitionAsync(indexScene));
+    }
+
+    IEnumerator SceneTransitionAsync(int indexScene)
+    {
+        AsyncOperation scene = SceneManager.LoadSceneAsync(indexScene);
+        
+        while (!scene.isDone)
+        {
+            yield return null;
+        }
     }
 
     public void PauseGame()

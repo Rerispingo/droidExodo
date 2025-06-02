@@ -26,7 +26,6 @@ public class Enemy_Behavior : MonoBehaviour
         if (shootCooldownC >= shootCooldown)
         {
             shootCooldownC = 0f;
-            float offsetShoot = 2f;
 
             for (int i = 0; i < 2; i++)
             {
