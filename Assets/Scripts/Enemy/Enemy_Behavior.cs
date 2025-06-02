@@ -53,12 +53,12 @@ public class Enemy_Behavior : MonoBehaviour
         {
             while (true)
             {
-                for (int i = 0; i < timeLength; i++)
+                for (int i = 0; i < timeLength; i = i+2)
                 {
                     transform.position += new Vector3(0, 0, variation / timeLength);
                     yield return new WaitForFixedUpdate();
                 }
-                for (int i = 0; i < timeLength; i++)
+                for (int i = 0; i < timeLength; i = i+2)
                 {
                     transform.position -= new Vector3(0, 0, variation / timeLength);
                     yield return new WaitForFixedUpdate();
@@ -66,5 +66,18 @@ public class Enemy_Behavior : MonoBehaviour
             }
         }
 
+    }
+
+    // Self Collision with Player.
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            EntityStats thisES = gameObject.GetComponent<EntityStats>();
+            EntityStats playerES = other.gameObject.GetComponent<EntityStats>();
+            thisES.onHealthChangeEvent.Invoke(-thisES.maxHealth);
+            playerES.onHealthChangeEvent.Invoke(-thisES.damage);
+            
+        }    
     }
 }

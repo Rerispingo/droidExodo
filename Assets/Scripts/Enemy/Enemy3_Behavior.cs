@@ -50,4 +50,17 @@ public class Enemy_Behavior3 : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }
+
+    // Self Collision with Player.
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            EntityStats thisES = gameObject.GetComponent<EntityStats>();
+            EntityStats playerES = other.gameObject.GetComponent<EntityStats>();
+            thisES.onHealthChangeEvent.Invoke(-thisES.maxHealth);
+            playerES.onHealthChangeEvent.Invoke(-thisES.damage);
+            
+        }    
+    }
 }

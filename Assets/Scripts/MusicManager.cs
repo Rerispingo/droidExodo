@@ -36,10 +36,8 @@ public class MusicManager : MonoBehaviour
         {
             currentMusic.Stop();
         }
-        catch (Exception)
-        {
-            currentMusic.resource = music;
-            currentMusic.Play();
-        }
+        catch (Exception) { }
+        currentMusic.resource = music;
+        currentMusic.Play();
     }
 }

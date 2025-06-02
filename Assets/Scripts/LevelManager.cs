@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
-
+    public float wallDeathSpeed;
     public int QuantEnemy;
     public float WallDeathPosition;
     public GameObject WallDeath;
@@ -38,8 +38,6 @@ public class LevelManager : MonoBehaviour
     {
         QuantEnemy = 1; //Evitar fase ser completada inicio (condicao e ser 0 para terminar a fase)
         StartCoroutine(ObjectLoader());
-
-
     }
 
     private IEnumerator ObjectLoader()
@@ -71,7 +69,7 @@ public class LevelManager : MonoBehaviour
             ExitTrigger.SetActive(true);
         }
 
-        WallDeath.transform.position += new Vector3(0, 0, 2) * Time.deltaTime;
+        WallDeath.transform.position += new Vector3(0, 0, wallDeathSpeed) * Time.deltaTime;
         WallDeathPosition = WallDeath.transform.position.z;
     }
 }

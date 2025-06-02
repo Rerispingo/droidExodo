@@ -16,6 +16,6 @@ public class ExitDoorBehavior : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("zVitoria");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Game2");
     }
 }

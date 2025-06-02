@@ -23,6 +23,8 @@ public class EntityStats : MonoBehaviour
     private float speedBoostMultiplier=1.5f;
 
     public GameObject DeathSound;
+    public GameObject PowerUpSound;
+
 
     void Start()
     {
@@ -76,10 +78,14 @@ public class EntityStats : MonoBehaviour
         yield return new WaitForSeconds(speedBoostDuration);
         speed = speedDefault;
         HUDManager.Instance.SpeedBoostText.SetActive(false);
+
+        PowerUpSound.GetComponent<AudioSource>().Play();
     }
 
     public void HealthBoost()
     {
-        onHealthChangeEvent.Invoke(maxHealth/5);
+        onHealthChangeEvent.Invoke(maxHealth / 5);
+
+        PowerUpSound.GetComponent<AudioSource>().Play();
     }
 }

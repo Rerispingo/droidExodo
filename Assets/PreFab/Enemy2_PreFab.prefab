@@ -128,7 +128,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 20
   damage: 25
-  attackCooldown: 0.8
+  attackCooldown: 1
   chargeAttackCooldown: 0
   bulletSpeed: 0.3
   MovementVariation: 10
