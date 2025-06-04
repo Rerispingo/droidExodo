@@ -10,8 +10,7 @@ public class playerMovement : MonoBehaviour
     private Rigidbody rb;
     private Camera cam;
 
-    public float minZ,maxZ;
-    public float minX,maxX;
+    public float offsetYCamera;
     public float offsetZ;
 
     void Start()
@@ -25,16 +24,8 @@ public class playerMovement : MonoBehaviour
     {
         final_speed = entityStats.speed * 500; // Compensar Time.deltaTime
 
-
-        // Movimentacao da camera.
-        if (transform.position.x > minX && transform.position.x < maxX)
-        {
-            cam.transform.position = new Vector3(transform.position.x, cam.transform.position.y, cam.transform.position.z);
-        }
-        if (transform.position.z > minZ && transform.position.z < maxZ)
-        {
-            cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, transform.position.z);
-        }
+           //Movimentação da Câmera
+        cam.transform.position = transform.position + new Vector3(0, offsetYCamera, 0);
 
         float WallDeathRelativePos = LevelManager.Instance.WallDeathPosition + offsetZ;
         if (cam.transform.position.z < WallDeathRelativePos)

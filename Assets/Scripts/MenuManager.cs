@@ -60,7 +60,6 @@ public class MenuManager : MonoBehaviour
 
     public void SceneTransition(int indexScene)
     {
-        Time.timeScale = 0;
         StartCoroutine(SceneTransitionAsync(indexScene));
     }
 
@@ -70,7 +69,7 @@ public class MenuManager : MonoBehaviour
         
         while (!scene.isDone)
         {
-            yield return null;
+            yield return new WaitForEndOfFrame();
         }
     }
 

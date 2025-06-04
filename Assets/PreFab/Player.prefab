@@ -381,8 +381,8 @@ Rigidbody:
   m_GameObject: {fileID: 4252587246671097185}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 5
-  m_AngularDrag: 5
+  m_Drag: 12
+  m_AngularDrag: 12
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -411,10 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61aa7747b85907b4cad03c9858ad0864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minZ: 0
-  maxZ: 90
-  minX: -10
-  maxX: 10
+  offsetYCamera: 30
   offsetZ: 20
 --- !u!114 &853217583241716975
 MonoBehaviour:
@@ -445,7 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74aab9195181f454e9bcc38c1c289d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 20
   speedDefault: 0
   health: 0
   maxHealth: 100
