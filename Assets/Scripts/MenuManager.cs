@@ -31,6 +31,7 @@ public class MenuManager : MonoBehaviour
     public AudioMixer audioMixer;
     private Slider[] slidersOptions;
     private String[] mixerGroups;
+    private float effectsVolume, musicVolume;
     /*
      * 0 - Volume
      */
@@ -39,7 +40,25 @@ public class MenuManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Definindo o mixer groups
+        mixerGroups = new string[] {
+            "effectsVolume",
+            "musicVolume"
+        };
+
+        effectsVolume = PlayerPrefs.GetFloat("effectsVolume", 0.5f);
+        musicVolume = PlayerPrefs.GetFloat("musicVolume", 0.5f);
+
+        Debug.Log(PlayerPrefs.GetFloat("effectsVolume", 0.5f));
+        Debug.Log(PlayerPrefs.GetFloat("musicVolume", 0.5f));
+
+        audioMixer.SetFloat(mixerGroups[0], Mathf.Log10(effectsVolume) * 20);
+        audioMixer.SetFloat(mixerGroups[1], Mathf.Log10(musicVolume) * 20);
+
+
         scenesIndex = new int[2] { 1, 2 };
+
+        
     }
 
     // Update is called once per frame
@@ -95,10 +114,6 @@ public class MenuManager : MonoBehaviour
             Button[] buttonList = optionsScreen.GetComponentsInChildren<Button>();
 
             slidersOptions = optionsScreen.GetComponentsInChildren<Slider>(); // Lista das opcoes
-            mixerGroups = new string[] {
-                "effectsVolume",
-                "musicVolume"
-            };
 
             // Lista de cada opcao sendo configurada
             audioMixer.GetFloat(mixerGroups[0], out float currentEffectsVolume);
@@ -108,6 +123,7 @@ public class MenuManager : MonoBehaviour
             audioMixer.GetFloat(mixerGroups[1], out float currentMusicVolume);
             slidersOptions[1].value = Mathf.Pow(10, currentMusicVolume / 20);
             slidersOptions[1].onValueChanged.AddListener(delegate { SliderChange(1); });
+
 
             for (int i = 0; i < buttonList.Length; i++) // Configurar botao Exit.
             {
@@ -125,14 +141,26 @@ public class MenuManager : MonoBehaviour
 
     public void SliderChange(int index)
     {
+        float value = -80;
         if (slidersOptions[index].value != 0) // Alterar volume
         {
-            audioMixer.SetFloat(mixerGroups[index], Mathf.Log10(slidersOptions[index].value) * 20);//Converter 0-1 p DB
+            value = Mathf.Log10(slidersOptions[index].value) * 20; // 0-1 p/ DB
         }
-        else
+
+        audioMixer.SetFloat(mixerGroups[index], value);
+        switch (index)
         {
-            audioMixer.SetFloat(mixerGroups[index], -80);
+            case 0:
+                PlayerPrefs.SetFloat("effectsVolume", slidersOptions[index].value);
+                break;
+            case 1:
+                PlayerPrefs.SetFloat("musicVolume", slidersOptions[index].value);
+                break;
+            default:
+                break;
         }
+
+        PlayerPrefs.Save();
     }
 
     public void ExitGame()

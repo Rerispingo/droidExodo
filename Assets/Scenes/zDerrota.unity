@@ -531,6 +531,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanvasMenu: {fileID: 0}
+  CanvasOptions: {fileID: 0}
+  optionsScreen: {fileID: 0}
+  scenesIndex: 
+  audioMixer: {fileID: 0}
 --- !u!114 &84071323335688929
 MonoBehaviour:
   m_ObjectHideFlags: 0
