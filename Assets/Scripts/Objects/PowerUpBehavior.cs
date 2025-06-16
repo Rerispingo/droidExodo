@@ -4,6 +4,8 @@ public class PowerUpBehavior : MonoBehaviour
 {
     public bool SpeedBoost;
     public bool Health;
+
+    public float rotationSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,7 +15,7 @@ public class PowerUpBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
     }
 
     void OnTriggerEnter(Collider other)
