@@ -309,6 +309,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8920175901400017352, guid: 607e6e326ad6d5a47b2db1e026554021, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8341,6 +8345,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ff388b62b9e9dd4384878c84865ccbc, type: 3}
+--- !u!1 &1194971952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2309345784106990296, guid: ef9a5694761137b4ab3a3f1975c610b0, type: 3}
+  m_PrefabInstance: {fileID: 4481110041302102161}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1200707045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11679,12 +11688,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe0c77fa63251c48a5dc3020b5ce493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallDeathSpeed: 2
+  wallDeathSpeed: 1
   QuantEnemy: 0
   WallDeathPosition: 0
   WallDeath: {fileID: 2020072527}
   ExitTrigger: {fileID: 72684258}
-  tutorialText: {fileID: 0}
+  tutorialText: {fileID: 1194971952}
 --- !u!4 &1716243529
 Transform:
   m_ObjectHideFlags: 0
@@ -13440,9 +13449,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd11f0140b3c3d4a858893b9736640c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InGame: 1
   CanvasMenu: {fileID: 1894228435}
   CanvasOptions: {fileID: 5185468309168464022, guid: 3870df85f61218848819582191253f91, type: 3}
   optionsScreen: {fileID: 0}
+  exitConfirmPreFab: {fileID: 2338383014688904406, guid: 02f89579c4a2e6f448b796a39e8bc3d0, type: 3}
   scenesIndex: 
   audioMixer: {fileID: 24100000, guid: 65de06814aee691469bb78c33f7e572a, type: 2}
 --- !u!1001 &2114689928
@@ -13781,7 +13792,10 @@ PrefabInstance:
 
         LMB - SHOOT
 
-        CAPS - Change Level'
+        CAPS - Change Level
+
+        Q/E
+        - Change Drone Sight'
       objectReference: {fileID: 0}
     - target: {fileID: 4555659784326070297, guid: ef9a5694761137b4ab3a3f1975c610b0, type: 3}
       propertyPath: m_fontSize
@@ -14009,8 +14023,8 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 370961480}
   - {fileID: 5269110811228110259}
-  - {fileID: 2082960447}
   - {fileID: 4481110041302102161}
+  - {fileID: 2082960447}
   - {fileID: 288243977}
   - {fileID: 827404010}
   - {fileID: 1716243529}

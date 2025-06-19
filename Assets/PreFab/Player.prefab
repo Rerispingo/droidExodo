@@ -413,6 +413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetYCamera: 30
   offsetZ: 20
+  rotationVelocity: 30
 --- !u!114 &853217583241716975
 MonoBehaviour:
   m_ObjectHideFlags: 0

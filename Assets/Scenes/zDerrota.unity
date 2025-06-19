@@ -530,11 +530,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd11f0140b3c3d4a858893b9736640c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanvasMenu: {fileID: 0}
-  CanvasOptions: {fileID: 0}
-  optionsScreen: {fileID: 0}
+  InGame: 0
+  InLoseScreen: 1
+  CanvasMenu: {fileID: 2487439808568875358}
+  CanvasOptions: {fileID: 5185468309168464022, guid: 3870df85f61218848819582191253f91, type: 3}
+  optionsScreen: {fileID: 5185468309168464022, guid: 3870df85f61218848819582191253f91, type: 3}
+  exitConfirmPreFab: {fileID: 2338383014688904406, guid: 02f89579c4a2e6f448b796a39e8bc3d0, type: 3}
   scenesIndex: 
-  audioMixer: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 65de06814aee691469bb78c33f7e572a, type: 2}
 --- !u!114 &84071323335688929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,7 +947,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EXIT TO MENU
+  m_text: EXIT TO MENU (M)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -971,8 +974,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48.6
-  m_fontSizeBase: 48.6
+  m_fontSize: 37.6
+  m_fontSizeBase: 37.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1160,7 +1163,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Restart
+  m_text: Restart (R)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1187,8 +1190,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 63.97
-  m_fontSizeBase: 63.97
+  m_fontSize: 52.72
+  m_fontSizeBase: 52.72
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

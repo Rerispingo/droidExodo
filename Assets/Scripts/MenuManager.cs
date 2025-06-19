@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 using System;
 using System.Collections;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class MenuManager : MonoBehaviour
 {
@@ -25,8 +26,11 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    private bool IsPaused, isOptions;
-    public GameObject CanvasMenu, CanvasOptions, optionsScreen;
+    private bool IsPaused, isOptions, isExitConfirm;
+    public bool InGame, InLoseScreen;
+    public GameObject CanvasMenu, CanvasOptions, optionsScreen, exitConfirmPreFab;
+
+    private GameObject exitConfirm;
     public int[] scenesIndex;
     public AudioMixer audioMixer;
     private Slider[] slidersOptions;
@@ -58,23 +62,77 @@ public class MenuManager : MonoBehaviour
 
         scenesIndex = new int[2] { 1, 2 };
 
-        
+        isExitConfirm = false;
+        isOptions = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) //Pausar o Jogo
+        if (!InLoseScreen)
         {
-            for (int i=0; i<scenesIndex.Length; i++)
+            if (Input.GetKeyDown(KeyCode.Escape)) //Pausar o Jogo
             {
-                if (scenesIndex[i] == SceneManager.GetActiveScene().buildIndex) // Verificar se n�o est� no menu
+                for (int i = 0; i < scenesIndex.Length; i++)
                 {
-                    PauseGame();
+                    if (scenesIndex[i] == SceneManager.GetActiveScene().buildIndex) // Verificar se n�o est� no menu
+                    {
+                        PauseGame();
+                    }
+                }
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.Return) && isExitConfirm)
+            {
+                ExitGameConfirm();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (isOptions)
+                {
+                    Options();
+                }
+                else if (isExitConfirm)
+                {
+                    ExitGameConfirmClose();
+                }
+                else if (!InGame)
+                {
+                    ExitGame();
                 }
             }
-            
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                Options();
+            }
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                SceneTransition(1);
+            }
+
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                if (InGame)
+                {
+                    SceneTransition(0);
+                }
+            }
         }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneTransition(1);
+            }
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                SceneTransition(0);
+            }
+        }
+
     }
 
     public void SceneTransition(int indexScene)
@@ -85,7 +143,7 @@ public class MenuManager : MonoBehaviour
     IEnumerator SceneTransitionAsync(int indexScene)
     {
         AsyncOperation scene = SceneManager.LoadSceneAsync(indexScene);
-        
+
         while (!scene.isDone)
         {
             yield return new WaitForEndOfFrame();
@@ -165,6 +223,23 @@ public class MenuManager : MonoBehaviour
 
     public void ExitGame()
     {
+        isExitConfirm = true;
+        exitConfirm = Instantiate(exitConfirmPreFab, CanvasMenu.transform);
+        Button[] Buttons = exitConfirm.GetComponentsInChildren<Button>();
+
+        Buttons[0].onClick.AddListener(ExitGameConfirm);
+        Buttons[1].onClick.AddListener(ExitGameConfirmClose);
+    }
+
+    public void ExitGameConfirmClose()
+    {
+        isExitConfirm = false;
+        Destroy(exitConfirm);
+    }
+
+    public void ExitGameConfirm()
+    {
         Application.Quit();
+        Debug.Log("saiu.");
     }
 }
