@@ -17,6 +17,9 @@ public class ExitDoorBehavior : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        MenuManager.Instance.SceneTransition(2);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            MenuManager.Instance.SceneTransition(2);
+        }
     }
 }

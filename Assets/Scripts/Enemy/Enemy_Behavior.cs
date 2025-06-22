@@ -7,11 +7,25 @@ public class Enemy_Behavior : MonoBehaviour
     public GameObject shootPreFab;
     private float shootSpeed, shootCooldownC, shootCooldown;
     public GameObject[] shootPos;
+    
+    private Rigidbody rb;
+    private Vector3 originalPos;
+    private float variation;
+    private bool isRight;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         entityStats = GetComponent<EntityStats>();
+        variation = entityStats.MovementVariation;
+        originalPos = transform.position;
+
+        rb = GetComponent<Rigidbody>();
+        isRight = true;
+        rb.AddForce(500 * transform.right);
+        
+
+        //Debug.Log($"Original {originalPos}: {variation} seria a variacao. Com a soma maxima de {new Vector3(variation, 0, 0)} seria {maxPos}");
 
         shootSpeed = entityStats.bulletSpeed * 10000f;
         shootCooldown = entityStats.attackCooldown;
@@ -44,33 +58,34 @@ public class Enemy_Behavior : MonoBehaviour
     IEnumerator Movement()
     {
         int timeLength = 120;
-        float variation = entityStats.MovementVariation;
-
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - (variation / 2));
-
-        if (variation > 0)
+        while (true)
         {
-            while (true)
+            Vector3 position = transform.position;
+            float distance = Vector3.Distance(originalPos, position);
+            
+            if (distance > variation)
             {
-                for (int i = 0; i < timeLength; i = i+2)
+                if (isRight)
                 {
-                    transform.position += new Vector3(0, 0, variation / timeLength);
-                    yield return new WaitForFixedUpdate();
+                    rb.linearVelocity = Vector3.zero;
+                    rb.AddForce(-500 * transform.right);
+                    isRight = false;
                 }
-                for (int i = 0; i < timeLength; i = i+2)
+                else
                 {
-                    transform.position -= new Vector3(0, 0, variation / timeLength);
-                    yield return new WaitForFixedUpdate();
+                    rb.linearVelocity = Vector3.zero;
+                    rb.AddForce(500 * transform.right);
+                    isRight = true;
                 }
             }
+            yield return new WaitForEndOfFrame();
         }
-
     }
 
     // Self Collision with Player.
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             EntityStats thisES = gameObject.GetComponent<EntityStats>();
             EntityStats playerES = other.gameObject.GetComponent<EntityStats>();

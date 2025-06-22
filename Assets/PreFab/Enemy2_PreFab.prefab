@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2859021455001186030}
   - component: {fileID: 3796892001884499899}
   - component: {fileID: 7169362399001629698}
+  - component: {fileID: -2554961861803831745}
   - component: {fileID: 5489421197271817335}
   - component: {fileID: 5503918025588317668}
   - component: {fileID: 1368414089477003116}
@@ -90,6 +91,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &-2554961861803831745
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465581579417788362}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &5489421197271817335
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -128,13 +156,14 @@ MonoBehaviour:
   health: 0
   maxHealth: 20
   damage: 25
-  attackCooldown: 1
+  attackCooldown: 0.6
   chargeAttackCooldown: 0
   bulletSpeed: 0.3
   MovementVariation: 10
   HealthBar: {fileID: 0}
   HealthPowerUp: {fileID: 2134999653159557501, guid: cec91d972c4f2ce42a311ba62ee0fc3b, type: 3}
   DeathSound: {fileID: 6192642700109802796, guid: f3ff11b1f4fd6b2409a3b73e56fd066e, type: 3}
+  PowerUpSound: {fileID: 0}
 --- !u!114 &1368414089477003116
 MonoBehaviour:
   m_ObjectHideFlags: 0
