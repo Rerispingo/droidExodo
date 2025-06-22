@@ -57,7 +57,6 @@ public class Enemy_Behavior : MonoBehaviour
 
     IEnumerator Movement()
     {
-        int timeLength = 120;
         while (true)
         {
             Vector3 position = transform.position;

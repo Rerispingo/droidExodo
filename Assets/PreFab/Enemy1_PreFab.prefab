@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7169362399001629698}
   - component: {fileID: 5489421197271817335}
   - component: {fileID: 5503918025588317668}
+  - component: {fileID: 782324237661222327}
   - component: {fileID: 236445123509450353}
   m_Layer: 0
   m_Name: Enemy1_PreFab
@@ -135,7 +136,8 @@ MonoBehaviour:
   HealthBar: {fileID: 0}
   HealthPowerUp: {fileID: 2134999653159557501, guid: cec91d972c4f2ce42a311ba62ee0fc3b, type: 3}
   DeathSound: {fileID: 6192642700109802796, guid: f3ff11b1f4fd6b2409a3b73e56fd066e, type: 3}
---- !u!114 &236445123509450353
+  PowerUpSound: {fileID: 0}
+--- !u!114 &782324237661222327
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,6 +145,22 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465581579417788362}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c42850188af6f4786eafdbe32bc79e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootPreFab: {fileID: 1847712636054003488, guid: f7635d565cad0964197259b37365a40a, type: 3}
+  shootPos:
+  - {fileID: 110989235818451715}
+  - {fileID: 4592639029841096025}
+--- !u!114 &236445123509450353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465581579417788362}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fd1fe9de5ec9e544af75aebda65504d, type: 3}
   m_Name: 
