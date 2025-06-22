@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: VidroMaterial
-    second: {fileID: 7132571592310004692, guid: 5f38cabd7bf450441a8d90a8afb51adc, type: 3}
+    second: {fileID: 2100000, guid: e0ba3a84298290b47bfaf72df353b85d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
