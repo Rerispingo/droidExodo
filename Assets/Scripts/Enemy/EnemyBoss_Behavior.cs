@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyBoss_Behavior : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class EnemyBoss_Behavior : MonoBehaviour
     private Vector3 originalPos;
     private float variation, velocity;
     private bool isRight;
+
+    public Slider BossBar;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,6 +39,8 @@ public class EnemyBoss_Behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        BossBar.value = (entityStats.health / entityStats.maxHealth);
+        
         if (Player != null)
         {
             gameObject.transform.LookAt(Player.transform);
