@@ -69,6 +69,15 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (IsPaused)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+        
         if (!InLoseScreen)
         {
             if (Input.GetKeyDown(KeyCode.Escape)) //Pausar o Jogo
