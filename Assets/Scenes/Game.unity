@@ -538,7 +538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5503918025588317668, guid: e7e0d8b86fdaa46499e67ada74c7289d, type: 3}
       propertyPath: MovementVariation
-      value: 20
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

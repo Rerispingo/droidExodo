@@ -22,6 +22,7 @@ public class EntityStats : MonoBehaviour
     private float speedBoostDuration=5f;
     private float speedBoostMultiplier=1.5f;
 
+    public GameObject HitSound;
     public GameObject DeathSound;
     public GameObject PowerUpSound;
 
@@ -37,6 +38,11 @@ public class EntityStats : MonoBehaviour
 
     void OnHealthChange(float value)
     {
+        if (gameObject.CompareTag("Player") && (value > 0))
+        {
+            HitSound.GetComponent<AudioSource>().Play();
+        }
+        
         health += value;
         if (health > maxHealth)
         {
