@@ -156,12 +156,13 @@ MonoBehaviour:
   health: 0
   maxHealth: 20
   damage: 25
-  attackCooldown: 0.6
+  attackCooldown: 1
   chargeAttackCooldown: 0
   bulletSpeed: 0.3
   MovementVariation: 10
   HealthBar: {fileID: 0}
   HealthPowerUp: {fileID: 2134999653159557501, guid: cec91d972c4f2ce42a311ba62ee0fc3b, type: 3}
+  HitSound: {fileID: 0}
   DeathSound: {fileID: 6192642700109802796, guid: f3ff11b1f4fd6b2409a3b73e56fd066e, type: 3}
   PowerUpSound: {fileID: 0}
 --- !u!114 &1368414089477003116

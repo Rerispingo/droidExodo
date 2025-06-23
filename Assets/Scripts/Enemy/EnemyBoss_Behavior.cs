@@ -75,7 +75,6 @@ public class EnemyBoss_Behavior : MonoBehaviour
         {
             Vector3 position = transform.position;
             float distance = Vector3.Distance(originalPos, position);
-            Debug.Log(distance + ": " + (distance > variation));
             
             if (distance > variation)
             {
@@ -95,19 +94,4 @@ public class EnemyBoss_Behavior : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }
-
-    // Self Collision with Player.
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            EntityStats thisES = gameObject.GetComponent<EntityStats>();
-            EntityStats playerES = other.gameObject.GetComponent<EntityStats>();
-            thisES.onHealthChangeEvent.Invoke(-thisES.maxHealth);
-            playerES.onHealthChangeEvent.Invoke(-thisES.damage);
-            
-        }    
-    }
-    
-    
 }

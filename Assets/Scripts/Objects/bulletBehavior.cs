@@ -21,8 +21,10 @@ public class bulletBehavior : MonoBehaviour
 
     
     private void OnTriggerEnter(Collider other) {
+        
         if (other.gameObject.tag == tagTarget)
         {
+            Debug.Log("Colidiu");
             other.gameObject.GetComponent<EntityStats>().onHealthChangeEvent.Invoke(-damage); //Dano do tiro
             Destroy(gameObject);
         }else if(other.gameObject != parent && other.gameObject.tag != "Bullet" && other.gameObject.tag != "PowerUp")

@@ -38,10 +38,12 @@ public class EntityStats : MonoBehaviour
 
     void OnHealthChange(float value)
     {
-        if (gameObject.CompareTag("Player") && (value > 0))
+        if (gameObject.CompareTag("Player") && (value < 0))
         {
             HitSound.GetComponent<AudioSource>().Play();
         }
+        
+        Debug.Log("Vida Alterou");
         
         health += value;
         if (health > maxHealth)
