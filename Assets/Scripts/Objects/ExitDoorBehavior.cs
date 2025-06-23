@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class ExitDoorBehavior : MonoBehaviour
 {
+    public int Scene;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,7 +20,7 @@ public class ExitDoorBehavior : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            MenuManager.Instance.SceneTransition(2);
+            MenuManager.Instance.SceneTransition(Scene);
         }
     }
 }

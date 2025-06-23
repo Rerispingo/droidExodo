@@ -79,13 +79,12 @@ public class EntityStats : MonoBehaviour
 
     IEnumerator SpeedBoost_I()
     {
+        PowerUpSound.GetComponent<AudioSource>().Play();
         speed *= speedBoostMultiplier;
         HUDManager.Instance.SpeedBoostText.SetActive(true);
         yield return new WaitForSeconds(speedBoostDuration);
         speed = speedDefault;
         HUDManager.Instance.SpeedBoostText.SetActive(false);
-
-        PowerUpSound.GetComponent<AudioSource>().Play();
     }
 
     public void HealthBoost()
