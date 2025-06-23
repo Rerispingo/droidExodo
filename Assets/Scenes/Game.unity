@@ -12978,11 +12978,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2106594015522395958, guid: ef9a5694761137b4ab3a3f1975c610b0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1759
+      value: 1760.02
       objectReference: {fileID: 0}
     - target: {fileID: 2106594015522395958, guid: ef9a5694761137b4ab3a3f1975c610b0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1015
+      value: -989
       objectReference: {fileID: 0}
     - target: {fileID: 2309345784106990296, guid: ef9a5694761137b4ab3a3f1975c610b0, type: 3}
       propertyPath: m_Name
@@ -12994,10 +12994,12 @@ PrefabInstance:
 
         LMB - SHOOT
 
-        CAPS - Change Level
+        RMB - Charged Shoot
 
-        Q/E
-        - Change Drone Sight'
+        CAPS
+        - Change Level
+
+        Q/E - Change Drone Sight'
       objectReference: {fileID: 0}
     - target: {fileID: 4555659784326070297, guid: ef9a5694761137b4ab3a3f1975c610b0, type: 3}
       propertyPath: m_fontSize

@@ -32709,7 +32709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2106594015522395958, guid: ef9a5694761137b4ab3a3f1975c610b0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1012
+      value: -995.3
       objectReference: {fileID: 0}
     - target: {fileID: 2309345784106990296, guid: ef9a5694761137b4ab3a3f1975c610b0, type: 3}
       propertyPath: m_Name
@@ -32721,10 +32721,12 @@ PrefabInstance:
 
         LMB - SHOOT
 
-        CAPS - Change Level
+        RMB - Charged Shoot
 
-        Q/E
-        - Change Drone Sight'
+        CAPS
+        - Change Level
+
+        Q/E - Change Drone Sight'
       objectReference: {fileID: 0}
     - target: {fileID: 4555659784326070297, guid: ef9a5694761137b4ab3a3f1975c610b0, type: 3}
       propertyPath: m_fontSize
@@ -32733,6 +32735,10 @@ PrefabInstance:
     - target: {fileID: 4555659784326070297, guid: ef9a5694761137b4ab3a3f1975c610b0, type: 3}
       propertyPath: m_fontSizeBase
       value: 24.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555659784326070297, guid: ef9a5694761137b4ab3a3f1975c610b0, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7745750494157287695, guid: ef9a5694761137b4ab3a3f1975c610b0, type: 3}
       propertyPath: m_Pivot.x
