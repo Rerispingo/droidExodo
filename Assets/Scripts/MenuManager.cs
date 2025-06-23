@@ -168,6 +168,7 @@ public class MenuManager : MonoBehaviour
         else
         {
             IsPaused = !IsPaused;
+            Debug.Log(IsPaused);
             CanvasMenu.SetActive(IsPaused);
         }
     }
