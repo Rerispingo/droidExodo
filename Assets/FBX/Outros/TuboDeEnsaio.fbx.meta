@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: VidroMaterial
-    second: {fileID: -876546973899608171, guid: 5152ac73e3c196743b7b85bd6350ee57, type: 3}
+    second: {fileID: 2100000, guid: 80ed165c21187a6449539af86cf737c0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
