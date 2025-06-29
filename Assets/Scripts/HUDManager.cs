@@ -26,6 +26,7 @@ public class HUDManager : MonoBehaviour
     public GameObject HealthBar;
     public TextMeshProUGUI EnemyCountText;
     public GameObject SpeedBoostText;
+    public GameObject FireRateBoostText;
     public GameObject chargeShootHUD;
 
     private EntityStats playerStats;

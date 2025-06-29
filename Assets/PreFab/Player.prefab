@@ -540,6 +540,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61aa7747b85907b4cad03c9858ad0864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  helice_rs: 25
+  helices:
+  - {fileID: 6443702925688160648}
+  - {fileID: 8627801411908693950}
+  - {fileID: 479301442671992085}
+  - {fileID: 493913526124145961}
   offsetYCamera: 30
   offsetZ: 20
   rotationVelocity: 30
@@ -1233,8 +1239,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f36adcf84ae38c745aba9a36a022b679, type: 3}
+--- !u!1 &479301442671992085 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1042475109261265021, guid: f36adcf84ae38c745aba9a36a022b679, type: 3}
+  m_PrefabInstance: {fileID: 8587995561225906838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &493913526124145961 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8211200982913353663, guid: f36adcf84ae38c745aba9a36a022b679, type: 3}
+  m_PrefabInstance: {fileID: 8587995561225906838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6443702925688160648 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5890125719542322402, guid: f36adcf84ae38c745aba9a36a022b679, type: 3}
+  m_PrefabInstance: {fileID: 8587995561225906838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8116622372506504573 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f36adcf84ae38c745aba9a36a022b679, type: 3}
+  m_PrefabInstance: {fileID: 8587995561225906838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8627801411908693950 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -9182087736475122392, guid: f36adcf84ae38c745aba9a36a022b679, type: 3}
   m_PrefabInstance: {fileID: 8587995561225906838}
   m_PrefabAsset: {fileID: 0}

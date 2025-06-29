@@ -53,14 +53,11 @@ public class MenuManager : MonoBehaviour
         effectsVolume = PlayerPrefs.GetFloat("effectsVolume", 0.5f);
         musicVolume = PlayerPrefs.GetFloat("musicVolume", 0.5f);
 
-        Debug.Log(PlayerPrefs.GetFloat("effectsVolume", 0.5f));
-        Debug.Log(PlayerPrefs.GetFloat("musicVolume", 0.5f));
-
         audioMixer.SetFloat(mixerGroups[0], Mathf.Log10(effectsVolume) * 20);
         audioMixer.SetFloat(mixerGroups[1], Mathf.Log10(musicVolume) * 20);
 
 
-        scenesIndex = new int[2] { 1, 2 };
+        scenesIndex = new int[3] { 1, 2, 3 };
 
         isExitConfirm = false;
         isOptions = false;

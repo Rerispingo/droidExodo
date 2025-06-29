@@ -4,6 +4,7 @@ public class PowerUpBehavior : MonoBehaviour
 {
     public bool SpeedBoost;
     public bool Health;
+    public bool FireRateBoost;
 
     public float rotationSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,6 +30,10 @@ public class PowerUpBehavior : MonoBehaviour
             }else if (Health)
             {
                 other.gameObject.GetComponent<EntityStats>().HealthBoost();
+                Destroy(gameObject);
+            }else if (FireRateBoost)
+            {
+                other.gameObject.GetComponent<EntityStats>().FireRateBoost();
                 Destroy(gameObject);
             }
             

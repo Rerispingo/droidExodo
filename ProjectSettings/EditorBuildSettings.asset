@@ -11,12 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 562c80ff5c880904f8a9b925ba3a43ef
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Game2.unity
     guid: d06aee513b4fbf34d93a9a6a1c7a7a3c
   - enabled: 1
     path: Assets/Scenes/Game3.unity
-    guid: 7024c087fc24a1c4f98031dfaa1ebc7f
+    guid: 1e460be947fefb1409b965ea99928a1d
   - enabled: 1
     path: Assets/Scenes/zVitoria.unity
     guid: 488a8650da4bbc84fa149e95cfc04f4e

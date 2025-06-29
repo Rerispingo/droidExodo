@@ -4,6 +4,9 @@ using UnityEngine.UIElements;
 
 public class playerMovement : MonoBehaviour
 {
+    public float helice_rs;
+    public GameObject[] helices;
+    
     private EntityStats entityStats;
     private float final_speed;
 
@@ -25,6 +28,11 @@ public class playerMovement : MonoBehaviour
 
     void Update()
     {
+        for (int i = 0; i < helices.Length ; i++)
+        {
+            helices[i].transform.Rotate(Vector3.forward * helice_rs);
+        }
+        
         final_speed = entityStats.speed * 500; // Compensar Time.deltaTime
 
            //Movimenta��o da C�mera

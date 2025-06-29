@@ -21,6 +21,7 @@ public class EntityStats : MonoBehaviour
 
     private float speedBoostDuration=5f;
     private float speedBoostMultiplier=1.5f;
+    private float fireRateDuration=5f;
 
     public GameObject HitSound;
     public GameObject DeathSound;
@@ -94,5 +95,20 @@ public class EntityStats : MonoBehaviour
         onHealthChangeEvent.Invoke(maxHealth / 5);
 
         PowerUpSound.GetComponent<AudioSource>().Play();
+    }
+
+    public void FireRateBoost()
+    {
+        StartCoroutine(FireRateBoost_I());
+    }
+
+    IEnumerator FireRateBoost_I()
+    {
+        PowerUpSound.GetComponent<AudioSource>().Play();
+        HUDManager.Instance.FireRateBoostText.SetActive(true);
+        attackCooldown /= 2;
+        yield return new WaitForSeconds(fireRateDuration);
+        HUDManager.Instance.FireRateBoostText.SetActive(false);
+        attackCooldown *= 2;
     }
 }
