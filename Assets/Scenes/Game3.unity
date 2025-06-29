@@ -371,6 +371,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f38cabd7bf450441a8d90a8afb51adc, type: 3}
+--- !u!1 &35286190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 35286191}
+  m_Layer: 0
+  m_Name: SpawnsEnemy42
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &35286191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35286190}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 24.6, y: 0, z: 25.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &36218559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15899,6 +15930,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcef4ec711c00964dad509249fea3d0a, type: 3}
+--- !u!1 &936782996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 936782997}
+  m_Layer: 0
+  m_Name: SpawnsEnemy4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &936782997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936782996}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -29.1, y: 0, z: 25.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &938222548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25461,7 +25523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1842423012906616602, guid: 6ba94f7f84e814d4a9daf6c4281f01c6, type: 3}
       propertyPath: attackCooldown
-      value: 0.225
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1842423012906616602, guid: 6ba94f7f84e814d4a9daf6c4281f01c6, type: 3}
       propertyPath: MovementVariation
@@ -25520,9 +25582,33 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7343972183912763492, guid: 6ba94f7f84e814d4a9daf6c4281f01c6, type: 3}
+      propertyPath: Enemy4
+      value: 
+      objectReference: {fileID: 3758572016675565297, guid: e1b12ee1105529c40a5f6d3217871161, type: 3}
+    - target: {fileID: 7343972183912763492, guid: 6ba94f7f84e814d4a9daf6c4281f01c6, type: 3}
       propertyPath: BossBar
       value: 
       objectReference: {fileID: 1797216641}
+    - target: {fileID: 7343972183912763492, guid: 6ba94f7f84e814d4a9daf6c4281f01c6, type: 3}
+      propertyPath: delayEnemy4
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343972183912763492, guid: 6ba94f7f84e814d4a9daf6c4281f01c6, type: 3}
+      propertyPath: multiSpeedEnemy4
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343972183912763492, guid: 6ba94f7f84e814d4a9daf6c4281f01c6, type: 3}
+      propertyPath: spawns.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343972183912763492, guid: 6ba94f7f84e814d4a9daf6c4281f01c6, type: 3}
+      propertyPath: 'spawns.Array.data[0]'
+      value: 
+      objectReference: {fileID: 936782996}
+    - target: {fileID: 7343972183912763492, guid: 6ba94f7f84e814d4a9daf6c4281f01c6, type: 3}
+      propertyPath: 'spawns.Array.data[1]'
+      value: 
+      objectReference: {fileID: 35286190}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34758,6 +34844,8 @@ SceneRoots:
   - {fileID: 252228902}
   - {fileID: 50433438}
   - {fileID: 2078910456}
+  - {fileID: 936782997}
+  - {fileID: 35286191}
   - {fileID: 764644025}
   - {fileID: 588404641}
   - {fileID: 753943268}

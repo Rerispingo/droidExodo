@@ -16,6 +16,12 @@ public class EnemyBoss_Behavior : MonoBehaviour
 
     public Slider BossBar;
 
+    public GameObject[] spawns;
+    public GameObject Enemy4;
+
+    public float delayEnemy4;
+    public float multiSpeedEnemy4;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,6 +40,7 @@ public class EnemyBoss_Behavior : MonoBehaviour
         
         StartCoroutine(FindPlayerObject());
         StartCoroutine(Movement());
+        StartCoroutine(Enemy4Spawns());
     }
 
     // Update is called once per frame
@@ -92,6 +99,27 @@ public class EnemyBoss_Behavior : MonoBehaviour
                 }
             }
             yield return new WaitForEndOfFrame();
+        }
+    }
+
+    IEnumerator Enemy4Spawns()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(delayEnemy4);
+            if (Physics.Raycast(gameObject.transform.position,
+                    (Player.transform.position - gameObject.transform.position), out RaycastHit hit,
+                    (Mathf.Abs(Vector3.Distance(Player.transform.position, gameObject.transform.position))) + 1))
+            {
+                if (hit.transform.gameObject.tag == "Player")
+                {
+                    for (int i = 0; i < spawns.Length; i++)
+                    {
+                        GameObject Enemy = Instantiate(Enemy4, spawns[i].transform);
+                        Enemy.GetComponent<EntityStats>().speed *= multiSpeedEnemy4;
+                    }
+                }
+            }
         }
     }
 }
