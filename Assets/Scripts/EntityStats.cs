@@ -61,10 +61,13 @@ public class EntityStats : MonoBehaviour
         else if (health <= 0 && gameObject.CompareTag("Enemy"))
         {
             LevelManager.Instance.QuantEnemy -= 1;
-            if (Random.Range(0, 2) == 0)
+            if (!(value == -10000))
             {
-                GameObject HealthPU = Instantiate(HealthPowerUp);
-                HealthPU.transform.position = gameObject.transform.position;
+                if (Random.Range(0, 2) == 0)
+                {
+                    GameObject HealthPU = Instantiate(HealthPowerUp);
+                    HealthPU.transform.position = gameObject.transform.position;
+                }
             }
             GameObject deathSoundI = GameObject.Instantiate(DeathSound);
             deathSoundI.transform.position = transform.position;
