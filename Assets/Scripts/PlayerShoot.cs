@@ -27,31 +27,34 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)) && cooldown <= 0) // Atirar
+        if (SceneManager.GetActiveScene().buildIndex == 2 || SceneManager.GetActiveScene().buildIndex == 3)
         {
-            Atirar();
-            cooldown = entityStats.attackCooldown;
-        }
-        cooldown -= Time.deltaTime;
-        
-        if ((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.F)) && !isShootingStrong)
-        {
-            isShootingStrong = true;
-            HUDManager.Instance.changeChargeSlider(chargingShootingStrong / chargeCooldown, isShootingStrong);
-            SecondShootChargeAudio.GetComponent<AudioSource>().Play(); // Carregar tiro sound.
-
-        }
-        if ((Input.GetMouseButton(1) || Input.GetKey(KeyCode.F)) && isShootingStrong)
-        {
-            chargingShootingStrong += Time.deltaTime;
-            HUDManager.Instance.changeChargeSlider(chargingShootingStrong / chargeCooldown);
-            if (chargingShootingStrong >= chargeCooldown)
+            if ((Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)) && cooldown <= 0) // Atirar
             {
-                chargingShootingStrong = 0;
-                isShootingStrong = false;
+                Atirar();
+                cooldown = entityStats.attackCooldown;
+            }
+            cooldown -= Time.deltaTime;
+        
+            if ((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.F)) && !isShootingStrong)
+            {
+                isShootingStrong = true;
                 HUDManager.Instance.changeChargeSlider(chargingShootingStrong / chargeCooldown, isShootingStrong);
-                AtirarForte();
-                SecondShootChargeAudio.GetComponent<AudioSource>().Stop(); // Stop SecondShootCharging sound.
+                SecondShootChargeAudio.GetComponent<AudioSource>().Play(); // Carregar tiro sound.
+
+            }
+            if ((Input.GetMouseButton(1) || Input.GetKey(KeyCode.F)) && isShootingStrong)
+            {
+                chargingShootingStrong += Time.deltaTime;
+                HUDManager.Instance.changeChargeSlider(chargingShootingStrong / chargeCooldown);
+                if (chargingShootingStrong >= chargeCooldown)
+                {
+                    chargingShootingStrong = 0;
+                    isShootingStrong = false;
+                    HUDManager.Instance.changeChargeSlider(chargingShootingStrong / chargeCooldown, isShootingStrong);
+                    AtirarForte();
+                    SecondShootChargeAudio.GetComponent<AudioSource>().Stop(); // Stop SecondShootCharging sound.
+                }
             }
         }
         if ((Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.F)))

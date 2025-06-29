@@ -44,8 +44,6 @@ public class EntityStats : MonoBehaviour
             HitSound.GetComponent<AudioSource>().Play();
         }
         
-        Debug.Log("Vida Alterou");
-        
         health += value;
         if (health > maxHealth)
         {

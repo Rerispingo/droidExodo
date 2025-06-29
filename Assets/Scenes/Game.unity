@@ -7289,71 +7289,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab23d50518bdda244bb6fc223de64d25, type: 3}
---- !u!1001 &1034490424
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2134999653159557501, guid: 6927d56d7ce756f4093400638c1287fa, type: 3}
-      propertyPath: m_Name
-      value: FireRatePowerUP
-      objectReference: {fileID: 0}
-    - target: {fileID: 2628263409258359492, guid: 6927d56d7ce756f4093400638c1287fa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -13.582017
-      objectReference: {fileID: 0}
-    - target: {fileID: 2628263409258359492, guid: 6927d56d7ce756f4093400638c1287fa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2628263409258359492, guid: 6927d56d7ce756f4093400638c1287fa, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 11.118127
-      objectReference: {fileID: 0}
-    - target: {fileID: 2628263409258359492, guid: 6927d56d7ce756f4093400638c1287fa, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2628263409258359492, guid: 6927d56d7ce756f4093400638c1287fa, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2628263409258359492, guid: 6927d56d7ce756f4093400638c1287fa, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2628263409258359492, guid: 6927d56d7ce756f4093400638c1287fa, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2628263409258359492, guid: 6927d56d7ce756f4093400638c1287fa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2628263409258359492, guid: 6927d56d7ce756f4093400638c1287fa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2628263409258359492, guid: 6927d56d7ce756f4093400638c1287fa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4158711282369328443, guid: 6927d56d7ce756f4093400638c1287fa, type: 3}
-      propertyPath: SpeedBoost
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4158711282369328443, guid: 6927d56d7ce756f4093400638c1287fa, type: 3}
-      propertyPath: FireRateBoost
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6927d56d7ce756f4093400638c1287fa, type: 3}
 --- !u!1001 &1037912782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13827,12 +13762,10 @@ PrefabInstance:
 
         LMB - SHOOT
 
-        RMB - Charged Shoot
+        CAPS - Change Level
 
-        CAPS
-        - Change Level
-
-        Q/E - Change Drone Sight'
+        Q/E
+        - Change Drone Sight'
       objectReference: {fileID: 0}
     - target: {fileID: 4555659784326070297, guid: ef9a5694761137b4ab3a3f1975c610b0, type: 3}
       propertyPath: m_fontSize
@@ -14306,4 +14239,3 @@ SceneRoots:
   - {fileID: 151134779}
   - {fileID: 1823650804}
   - {fileID: 1599142542}
-  - {fileID: 1034490424}

@@ -54,7 +54,7 @@ public class LevelManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.CapsLock))
         {
             int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
-            if (nextScene > 2)
+            if (nextScene > 3)
             {
                 nextScene = 1;
             }
