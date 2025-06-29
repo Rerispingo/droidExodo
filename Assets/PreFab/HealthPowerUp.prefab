@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2628263409258359492}
   - component: {fileID: 5828334432614956953}
   - component: {fileID: 1088367415081477384}
-  - component: {fileID: 761472616349655155}
   - component: {fileID: 4158711282369328443}
+  - component: {fileID: 7125085139018799942}
   m_Layer: 0
   m_Name: HealthPowerUp
   m_TagString: PowerUp
@@ -89,27 +89,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &761472616349655155
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2134999653159557501}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4158711282369328443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +103,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeedBoost: 0
   Health: 1
+  FireRateBoost: 0
   rotationSpeed: 40
+--- !u!65 &7125085139018799942
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134999653159557501}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.4134252, y: 5.489128, z: 1.6937114}
+  m_Center: {x: 0, y: 1.8033829, z: 0}
 --- !u!1001 &1855408101735824586
 PrefabInstance:
   m_ObjectHideFlags: 0
