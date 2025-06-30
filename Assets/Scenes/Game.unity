@@ -13453,6 +13453,8 @@ MonoBehaviour:
   Click: {fileID: 1347387225}
   scenesIndex: 
   audioMixer: {fileID: 24100000, guid: 65de06814aee691469bb78c33f7e572a, type: 2}
+  HelpScreen: {fileID: 0}
+  CreditsScreen: {fileID: 0}
 --- !u!1 &1649137518221203193 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1606442159881740145, guid: 6743f36108a2bbc4bac59ee1aff731cd, type: 3}

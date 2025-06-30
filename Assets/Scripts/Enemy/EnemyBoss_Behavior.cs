@@ -13,7 +13,7 @@ public class EnemyBoss_Behavior : MonoBehaviour
     private Rigidbody rb;
     private Vector3 originalPos;
     private float variation, velocity;
-    private bool isRight;
+    private int isRight;
 
     public Slider BossBar;
 
@@ -32,15 +32,13 @@ public class EnemyBoss_Behavior : MonoBehaviour
         originalPos = transform.position;
 
         rb = GetComponent<Rigidbody>();
-        isRight = true;
-        rb.AddForce(velocity * Vector3.right);
+        isRight = 1;
 
         shootSpeed = entityStats.bulletSpeed * 10000f;
         shootCooldown = entityStats.attackCooldown;
         shootCooldownC = shootCooldown;
         
         StartCoroutine(FindPlayerObject());
-        StartCoroutine(Movement());
         StartCoroutine(Enemy4Spawns());
     }
 
@@ -67,6 +65,8 @@ public class EnemyBoss_Behavior : MonoBehaviour
             bullet.GetComponent<Rigidbody>().AddForce((bullet.transform.forward) * shootSpeed);
         }
         shootCooldownC += Time.deltaTime;
+        
+        rb.AddForce(Vector3.right * (entityStats.speed * isRight * Time.deltaTime));
     }
 
     IEnumerator FindPlayerObject()
@@ -78,31 +78,6 @@ public class EnemyBoss_Behavior : MonoBehaviour
         }
     }
     
-    IEnumerator Movement()
-    {
-        while (true)
-        {
-            Vector3 position = transform.position;
-            float distance = Vector3.Distance(originalPos, position);
-            
-            if (distance > variation)
-            {
-                if (isRight)
-                {
-                    rb.linearVelocity = Vector3.zero;
-                    rb.AddForce(-velocity * Vector3.right);
-                    isRight = false;
-                }
-                else
-                {
-                    rb.linearVelocity = Vector3.zero;
-                    rb.AddForce(velocity * Vector3.right);
-                    isRight = true;
-                }
-            }
-            yield return new WaitForEndOfFrame();
-        }
-    }
 
     IEnumerator Enemy4Spawns()
     {
@@ -123,5 +98,15 @@ public class EnemyBoss_Behavior : MonoBehaviour
                 }
             }
         }
+    }
+    
+    void OnTriggerEnter(Collider other)
+    {
+        if (!other.gameObject.CompareTag("Bullet") && !other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log(other.gameObject.name);
+            rb.linearVelocity = Vector3.zero;
+            isRight = -isRight;
+        }    
     }
 }

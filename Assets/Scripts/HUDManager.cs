@@ -57,15 +57,15 @@ public class HUDManager : MonoBehaviour
         {
             if (quantEnemy != 0)
             {
-                EnemyCountText.text = $"Enemies left: {quantEnemy}";
+                EnemyCountText.text = $"Enemies remaining: {quantEnemy}";
             }else
             {
-                EnemyCountText.text = $"Passe pela porta";
+                EnemyCountText.text = $"Pass through the door";
             }
         }
         else
         {
-            EnemyCountText.text = $"Mate ODOXE";
+            EnemyCountText.text = $"Kill ODOXE!";
         }
         
         
