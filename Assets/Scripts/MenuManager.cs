@@ -45,6 +45,8 @@ public class MenuManager : MonoBehaviour
 
     public GameObject HelpScreen;
     private bool helpOpened;
+    public GameObject CreditsScreen;
+    private bool CreditsOpened;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -68,23 +70,29 @@ public class MenuManager : MonoBehaviour
         isOptions = false;
 
         helpOpened = false;
+        CreditsOpened = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsPaused)
+        if (InGame)
         {
-            Time.timeScale = 0;
-            MusicManager.Instance.currentMusic.Pause();
-            DroneSound.Pause();
+            if (IsPaused)
+            {
+                Time.timeScale = 0;
+                MusicManager.Instance.currentMusic.Pause();
+                DroneSound.Pause();
+            }
+            else
+            {
+                Time.timeScale = 1;
+                MusicManager.Instance.currentMusic.UnPause();
+                DroneSound.UnPause();
+            }
         }
-        else
-        {
-            Time.timeScale = 1;
-            MusicManager.Instance.currentMusic.UnPause();
-            DroneSound.UnPause();
-        }
+        
+        
         
         if (!InLoseScreen)
         {
@@ -279,5 +287,11 @@ public class MenuManager : MonoBehaviour
     {
         helpOpened = !helpOpened;
         HelpScreen.SetActive(helpOpened);
+    }
+    
+    public void Credits()
+    {
+        CreditsOpened = !CreditsOpened;
+        CreditsScreen.SetActive(CreditsOpened);
     }
 }
