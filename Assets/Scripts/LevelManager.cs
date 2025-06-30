@@ -32,6 +32,7 @@ public class LevelManager : MonoBehaviour
     public GameObject WallDeath;
     public GameObject ExitTrigger;
     public GameObject tutorialText;
+    public GameObject Boss;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -64,7 +65,12 @@ public class LevelManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (QuantEnemy <= 0)
+        if (QuantEnemy <= 0 && SceneManager.GetActiveScene().buildIndex != 3)
+        {
+            ExitTrigger.SetActive(true);
+        }
+
+        if (!Boss && SceneManager.GetActiveScene().buildIndex == 3)
         {
             ExitTrigger.SetActive(true);
         }

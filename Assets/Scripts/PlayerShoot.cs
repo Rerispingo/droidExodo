@@ -27,12 +27,15 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)) && cooldown <= 0) // Atirar
+        if (!MenuManager.Instance.IsPaused)
         {
-            Atirar();
-            cooldown = entityStats.attackCooldown;
+            if ((Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)) && cooldown <= 0) // Atirar
+            {
+                Atirar();
+                cooldown = entityStats.attackCooldown;
+            }
+            cooldown -= Time.deltaTime;
         }
-        cooldown -= Time.deltaTime;
         
         if (SceneManager.GetActiveScene().buildIndex == 2 || SceneManager.GetActiveScene().buildIndex == 3)
         {

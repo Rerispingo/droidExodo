@@ -4,6 +4,7 @@ using UnityEngine;
 public class Enemy_Behavior3 : MonoBehaviour
 {
     private EntityStats entityStats;
+    public GameObject shootSound;
     public GameObject shootPreFab;
     private float shootSpeed, shootCooldownC, shootCooldown;
     private GameObject Player;
@@ -35,6 +36,7 @@ public class Enemy_Behavior3 : MonoBehaviour
             
             for (int i = 0; i < 2; i++)
             {
+                shootSound.GetComponent<AudioSource>().Play();
                 GameObject[] bullets = new GameObject[2];
                 bullets[i] = GameObject.Instantiate(shootPreFab);
                 bullets[i].GetComponent<bulletBehavior>().damage = entityStats.damage; //Dano do tiro

@@ -26,9 +26,12 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    private bool IsPaused, isOptions, isExitConfirm;
+    private bool isOptions, isExitConfirm;
+    public bool IsPaused;
     public bool InGame, InLoseScreen;
     public GameObject CanvasMenu, CanvasOptions, optionsScreen, exitConfirmPreFab;
+    public AudioSource DroneSound;
+    public AudioSource Click;
 
     private GameObject exitConfirm;
     public int[] scenesIndex;
@@ -40,6 +43,8 @@ public class MenuManager : MonoBehaviour
      * 0 - Volume
      */
 
+    public GameObject HelpScreen;
+    private bool helpOpened;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -61,6 +66,8 @@ public class MenuManager : MonoBehaviour
 
         isExitConfirm = false;
         isOptions = false;
+
+        helpOpened = false;
     }
 
     // Update is called once per frame
@@ -69,10 +76,14 @@ public class MenuManager : MonoBehaviour
         if (IsPaused)
         {
             Time.timeScale = 0;
+            MusicManager.Instance.currentMusic.Pause();
+            DroneSound.Pause();
         }
         else
         {
             Time.timeScale = 1;
+            MusicManager.Instance.currentMusic.UnPause();
+            DroneSound.UnPause();
         }
         
         if (!InLoseScreen)
@@ -173,21 +184,27 @@ public class MenuManager : MonoBehaviour
     public void Options() // Abrir opcoes dentro do pause.
     {
         isOptions = !isOptions;
+        Debug.Log(isOptions);
         if (isOptions)
         {
             optionsScreen = Instantiate(CanvasOptions);
             Button[] buttonList = optionsScreen.GetComponentsInChildren<Button>();
+            Debug.Log("Chegou Aqui");
 
             slidersOptions = optionsScreen.GetComponentsInChildren<Slider>(); // Lista das opcoes
+            Debug.Log("Chegou Aqui");
 
             // Lista de cada opcao sendo configurada
             audioMixer.GetFloat(mixerGroups[0], out float currentEffectsVolume);
             slidersOptions[0].value = Mathf.Pow(10, currentEffectsVolume / 20); // Conversao contraria (DB to 0-1)
             slidersOptions[0].onValueChanged.AddListener(delegate { SliderChange(0); });
+            Debug.Log("Chegou Aqui");
 
             audioMixer.GetFloat(mixerGroups[1], out float currentMusicVolume);
             slidersOptions[1].value = Mathf.Pow(10, currentMusicVolume / 20);
             slidersOptions[1].onValueChanged.AddListener(delegate { SliderChange(1); });
+            
+            Debug.Log("Chegou Aqui");
 
 
             for (int i = 0; i < buttonList.Length; i++) // Configurar botao Exit.
@@ -195,6 +212,7 @@ public class MenuManager : MonoBehaviour
                 if (buttonList[i].gameObject.name == "ExitButton")
                 {
                     buttonList[i].onClick.AddListener(Options);
+                    buttonList[i].onClick.AddListener(PlayClick);
                 }
             }
         }
@@ -235,7 +253,9 @@ public class MenuManager : MonoBehaviour
         Button[] Buttons = exitConfirm.GetComponentsInChildren<Button>();
 
         Buttons[0].onClick.AddListener(ExitGameConfirm);
+        Buttons[0].onClick.AddListener(PlayClick);
         Buttons[1].onClick.AddListener(ExitGameConfirmClose);
+        Buttons[1].onClick.AddListener(PlayClick);
     }
 
     public void ExitGameConfirmClose()
@@ -248,5 +268,16 @@ public class MenuManager : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("saiu.");
+    }
+
+    public void PlayClick()
+    {
+        Click.Play();
+    }
+
+    public void Help()
+    {
+        helpOpened = !helpOpened;
+        HelpScreen.SetActive(helpOpened);
     }
 }

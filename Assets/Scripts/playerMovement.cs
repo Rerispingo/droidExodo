@@ -28,14 +28,9 @@ public class playerMovement : MonoBehaviour
 
     void Update()
     {
-        for (int i = 0; i < helices.Length ; i++)
-        {
-            helices[i].transform.Rotate(Vector3.forward * helice_rs);
-        }
-        
         final_speed = entityStats.speed * 500; // Compensar Time.deltaTime
 
-           //Movimenta��o da C�mera
+        //Movimenta��o da C�mera
         cam.transform.position = transform.position + new Vector3(0, offsetYCamera, 0);
 
         float WallDeathRelativePos = LevelManager.Instance.WallDeathPosition + offsetZ;
@@ -78,14 +73,22 @@ public class playerMovement : MonoBehaviour
             isKeyboardRotation = false;
         }
 
-        if (!isKeyboardRotation)
+        if (!MenuManager.Instance.IsPaused)
         {
-            //Rotacao do player
-            Vector3 direction = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.y - transform.position.y));
-            direction = new Vector3(direction.x, gameObject.transform.position.y, direction.z);
+            if (!isKeyboardRotation)
+            {
+                //Rotacao do player
+                Vector3 direction = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.y - transform.position.y));
+                direction = new Vector3(direction.x, gameObject.transform.position.y, direction.z);
 
-            transform.LookAt(direction);
+                transform.LookAt(direction);
+            }
+            
+            
+            for (int i = 0; i < helices.Length ; i++)
+            {
+                helices[i].transform.Rotate(Vector3.forward * helice_rs);
+            }
         }
-        
     }
 }

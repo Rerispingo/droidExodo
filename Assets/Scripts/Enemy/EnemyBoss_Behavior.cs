@@ -6,6 +6,7 @@ public class EnemyBoss_Behavior : MonoBehaviour
 {
     private EntityStats entityStats;
     public GameObject shootPreFab;
+    public GameObject shootSound;
     private float shootSpeed, shootCooldownC, shootCooldown;
     private GameObject Player;
     
@@ -56,7 +57,8 @@ public class EnemyBoss_Behavior : MonoBehaviour
         if (shootCooldownC >= shootCooldown)
         {
             shootCooldownC = 0f;
-
+            
+            shootSound.GetComponent<AudioSource>().Play();
             GameObject bullet = GameObject.Instantiate(shootPreFab); // Criacao e preparacao do tiro
             bullet.GetComponent<bulletBehavior>().damage = entityStats.damage;
             bullet.GetComponent<bulletBehavior>().parent = gameObject;

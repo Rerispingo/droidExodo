@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -49,7 +50,7 @@ public class EntityStats : MonoBehaviour
         {
             health = maxHealth;
         }
-
+        
         if (health <= 0 && gameObject.CompareTag("Player"))
         {
             GameObject deathSoundI = GameObject.Instantiate(DeathSound, transform);
@@ -61,12 +62,27 @@ public class EntityStats : MonoBehaviour
             LevelManager.Instance.QuantEnemy -= 1;
             if (!(value == -10000))
             {
-                if (Random.Range(0, 2) == 0)
+                if (UnityEngine.Random.Range(0, 2) == 0)
                 {
                     GameObject HealthPU = Instantiate(HealthPowerUp);
                     HealthPU.transform.position = gameObject.transform.position;
                 }
             }
+            GameObject deathSoundI = GameObject.Instantiate(DeathSound);
+            deathSoundI.transform.position = transform.position;
+            deathSoundI.GetComponent<AudioSource>().Play();
+
+            try
+            {
+                GetComponent<EnemyBoss_Behavior>().BossBar.value = 0;
+            } catch (Exception Ex) {}
+
+            ;
+            Destroy(gameObject);
+        }
+        else if(health <= 0)
+        {
+            Debug.Log("Entrou Aqui.");
             GameObject deathSoundI = GameObject.Instantiate(DeathSound);
             deathSoundI.transform.position = transform.position;
             deathSoundI.GetComponent<AudioSource>().Play();

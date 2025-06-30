@@ -6,6 +6,23 @@ using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 public class MusicManager : MonoBehaviour
 {
+    public static MusicManager Instance { get; private set; }
+    private void Awake() //Singleton
+    {
+        if (Instance != null && Instance != this)
+        {
+
+            Destroy(this);
+
+        }
+        else
+        {
+
+            Instance = this;
+
+        }
+    }
+    
     public Musics musicsSO; //Scriptable object com a lista das musicas
     public AudioSource currentMusic;
 
@@ -26,7 +43,7 @@ public class MusicManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private IEnumerator playMusic(AudioClip music)

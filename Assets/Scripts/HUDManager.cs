@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HUDManager : MonoBehaviour
 {
@@ -52,13 +53,21 @@ public class HUDManager : MonoBehaviour
     void Update()
     {
         int quantEnemy = LevelManager.Instance.QuantEnemy;
-        if (quantEnemy != 0)
+        if (SceneManager.GetActiveScene().buildIndex != 3)
         {
-            EnemyCountText.text = $"Enemies left: {quantEnemy}";
-        }else
-        {
-            EnemyCountText.text = $"Passe pela porta";
+            if (quantEnemy != 0)
+            {
+                EnemyCountText.text = $"Enemies left: {quantEnemy}";
+            }else
+            {
+                EnemyCountText.text = $"Passe pela porta";
+            }
         }
+        else
+        {
+            EnemyCountText.text = $"Mate ODOXE";
+        }
+        
         
     }
 
