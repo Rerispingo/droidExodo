@@ -274,6 +274,7 @@ public class MenuManager : MonoBehaviour
 
     public void ExitGameConfirm()
     {
+        PlayerPrefs.SetInt("video", 1);
         Application.Quit();
         Debug.Log("saiu.");
     }

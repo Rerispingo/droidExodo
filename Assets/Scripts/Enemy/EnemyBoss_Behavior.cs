@@ -9,6 +9,7 @@ public class EnemyBoss_Behavior : MonoBehaviour
     public GameObject shootSound;
     private float shootSpeed, shootCooldownC, shootCooldown;
     private GameObject Player;
+    public GameObject[] Helices;
     
     private Rigidbody rb;
     private Vector3 originalPos;
@@ -67,6 +68,11 @@ public class EnemyBoss_Behavior : MonoBehaviour
         shootCooldownC += Time.deltaTime;
         
         rb.AddForce(Vector3.right * (entityStats.speed * isRight * Time.deltaTime));
+        
+        for (int i = 0; i < Helices.Length ; i++)
+        {
+            Helices[i].transform.Rotate(Vector3.forward * 35);
+        }
     }
 
     IEnumerator FindPlayerObject()
